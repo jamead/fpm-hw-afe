@@ -1,0 +1,193 @@
+(footprint "RCAT_LZ1737"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Mini-Circuits RCAT series fixed attenuator, case LZ1737, 2.25x2.25mm. Land pattern based on Mini-Circuits PL-386. Pins 1/3 RF; pins 2/4 GND.")
+	(tags "Mini-Circuits RCAT RCAT-01+ attenuator LZ1737 PL-386 RF")
+	(property "Reference" "R?"
+		(at 0 -2.05 0)
+		(layer "F.SilkS")
+		(uuid "e4c2bff4-4f51-4403-9d24-8d6d7fd2db89")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(property "Value" "RCAT-01+"
+		(at 0 2.05 0)
+		(layer "F.Fab")
+		(uuid "72b2e347-ab42-42a2-ba87-8b66e08e4094")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3fbca652-e91c-4bc0-a730-2767f8d1ee7a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9c1e9553-bfc7-497d-a39c-151379f1118c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.35 -1.35)
+		(end 1.35 -1.35)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "82f3073a-0552-4007-917e-6941fac2029e")
+	)
+	(fp_line
+		(start -1.35 1.35)
+		(end -1.35 -1.35)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "3c633f70-f5a9-4b15-9bb4-e4d183d8917c")
+	)
+	(fp_line
+		(start 1.35 -1.35)
+		(end 1.35 1.35)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "b303b898-7412-49a4-88f4-54b7641ca776")
+	)
+	(fp_line
+		(start 1.35 1.35)
+		(end -1.35 1.35)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "f4de5ad5-9b2f-45b6-8ff3-d3e1c92495ae")
+	)
+	(fp_circle
+		(center -1.52 1.22)
+		(end -1.42 1.22)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "b155b842-dd3e-46a2-ad6c-0f8bec1202aa")
+	)
+	(fp_line
+		(start -1.375 -1.375)
+		(end 1.375 -1.375)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "972c9c6a-d020-4e2e-b38b-156a474bdb6b")
+	)
+	(fp_line
+		(start -1.375 1.375)
+		(end -1.375 -1.375)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "23445e3b-07b4-4435-a38b-9dd2a668024c")
+	)
+	(fp_line
+		(start 1.375 -1.375)
+		(end 1.375 1.375)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "b6da947f-5ad2-4299-8d41-6922bb32541d")
+	)
+	(fp_line
+		(start 1.375 1.375)
+		(end -1.375 1.375)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "83d8ae76-dafe-43cf-90ec-6293844e8294")
+	)
+	(fp_rect
+		(start -1.125 -1.125)
+		(end 1.125 1.125)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "1330dc59-f8d9-4f22-a07a-ceb2a0cdda0d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "4cdaabb0-5d21-4fe6-b585-edc26d7566dd")
+		(effects
+			(font
+				(size 0.55 0.55)
+				(thickness 0.08)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0.8)
+		(size 0.55 0.66)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b362fd66-1e24-4f30-a436-2c11fe152535")
+	)
+	(pad "2" smd rect
+		(at -0.565 0)
+		(size 1.13 0.432)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2c4d8677-0ae3-41eb-91b6-40820ac83f56")
+	)
+	(pad "3" smd rect
+		(at 0 -0.8)
+		(size 0.55 0.66)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ecc84694-402c-45de-aed6-7d517e839e68")
+	)
+	(pad "4" smd rect
+		(at 0.565 0)
+		(size 1.13 0.432)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "118a2f98-2cd4-48f3-804b-b70745b7f6df")
+	)
+	(embedded_fonts no)
+)

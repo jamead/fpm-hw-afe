@@ -1,0 +1,5 @@
+# KiCad automatic backups
+*-backups/
+
+# KiCad cache
+fp-info-cache

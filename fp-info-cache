@@ -1,4 +1,4 @@
-26742594381425967
+26747954632033463
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -72527,6 +72527,13 @@ Mini-Circuits PAT attenuator AF320 PL-208 RF
 16
 4
 My_Footprints
+QFN24_XLF-13H&plus__MNC
+
+XLF-13H+ 
+0
+25
+25
+My_Footprints
 QFN32_5X5_PSM
 
 PE43713B-Z 
@@ -72541,6 +72548,13 @@ QFN50P350X350X100-21N
 25
 21
 My_Footprints
+RCAT_LZ1737
+Mini-Circuits RCAT series fixed attenuator, case LZ1737, 2.25x2.25mm. Land pattern based on Mini-Circuits PL-386. Pins 1/3 RF; pins 2/4 GND.
+Mini-Circuits RCAT RCAT-01+ attenuator LZ1737 PL-386 RF
+0
+4
+4
+My_Footprints
 RK_3_ADI
 
 ADL5536ARKZ-R7 
@@ -72554,6 +72568,13 @@ SMA THT Female Jack Vertical ExtendedLegs
 0
 5
 2
+My_Footprints
+TT1413_MNC
+
+RPS-2-30+ 
+0
+6
+6
 NetTie
 NetTie-2_SMD_Pad0.5mm
 Net tie, 2 pin, 0.5mm square SMD pads
