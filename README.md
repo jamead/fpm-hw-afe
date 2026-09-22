@@ -1,212 +1,101 @@
-# Fill Pattern Monitor
+# NSLS-II Fill Pattern Monitor Analog Front End
 
-Bunch-by-bunch **Fill Pattern Monitor** RF front end for the NSLS-II BPM system.
+Analog front-end (AFE) board for the NSLS-II Fill Pattern Monitor.
 
-The design uses spare RFSoC ADC channels to digitize the same BPM button signal at two different effective gain ranges. A direct path provides large-signal headroom while a programmable high-gain path provides sensitivity for smaller bunch signals.
+![NSLS-II Fill Pattern Monitor analog front-end board](fpm-afe.png)
 
-## RF Architecture
+| Item | Description |
+|---|---|
+| Drawing number | E-SK-2604 |
+| Revision | 1 |
+| Date | September 20, 2026 |
+| Design software | KiCad |
+| PCB | Six layers, 1.6 mm nominal thickness |
 
-```text
-BPM Button
-    |
-    v
-RCAT-01+              1 dB broadband input pad
-    |
-    v
-XLF-172H+             Reflectionless low-pass filter
-    |
-    v
-RPS-2-30+             2-way RF power splitter
-   / \
-  /   \
- /     \
-v       v
+## Overview
 
-LOW-GAIN PATH                 HIGH-GAIN PATH
+The board accepts a broadband RF signal and produces two simultaneous 50-ohm outputs:
 
-Direct                         PE43713B-Z
-  |                         Programmable attenuator
-  |                              |
-  |                              v
-  |                           ADL5611
-  |                        Wideband amplifier
-  |                              |
-  |                              v
-  |                          XLF-172H+
-  |                       Reflectionless LPF
-  |                              |
-  v                              v
-RFSoC ADC                     RFSoC ADC
-```
+- **Low-gain output:** a direct, filtered monitor of the input signal.
+- **High-gain output:** a filtered and amplified signal with digitally programmable attenuation.
 
-The splitter is intentionally placed **before** the programmable attenuator so that the low-gain ADC always sees the largest available signal while the high-gain path can be adjusted independently.
+The two outputs provide sufficient dynamic range to observe both large and small signals without changing the input connection. The programmable attenuator in the high-gain path allows its level to be adjusted for the acquisition system while reducing the risk of amplifier or ADC saturation.
 
-## Design Goals
+## RF signal path
 
-- Measure bunch-by-bunch fill pattern with a 5 GS/s RFSoC ADC.
-- Preserve the time-domain BPM button pulse shape.
-- Provide simultaneous low-gain and high-gain acquisition.
-- Extend usable dynamic range without an RF bypass switch.
-- Maintain a well-behaved 50 Ω environment at the BPM input.
-- Reduce reflected out-of-band energy returning toward the BPM button.
-- Provide programmable attenuation ahead of the high-gain amplifier.
-- Limit out-of-band noise and harmonics before digitization.
-
-## Key Components
-
-| Function | Part | Notes |
-|---|---|---|
-| Input pad | **RCAT-01+** | 1 dB broadband fixed attenuator |
-| Input low-pass filter | **XLF-172H+** | Reflectionless low-pass filter |
-| 2-way splitter | **RPS-2-30+** | Splits the BPM signal into low/high gain paths |
-| Programmable attenuator | **PE43713B-Z** | Controls high-gain path level |
-| High-gain amplifier | **ADL5611** | Wideband gain block |
-| High-gain output filter | **XLF-172H+** | Removes out-of-band amplifier noise/harmonics |
-| ADC platform | **RFSoC** | 5 GS/s ADC acquisition |
-
-## Why a Reflectionless Input Filter?
-
-A conventional low-pass filter can present a poor impedance match in its stopband and reflect rejected high-frequency energy back toward the BPM button.
-
-The XLF-series reflectionless filter absorbs much of this rejected energy instead. Placing it near the front of the chain helps maintain a better broadband termination for the BPM cable and reduces re-reflections.
-
-The RCAT input pad provides additional broadband damping of downstream impedance errors.
-
-## Low-Gain Path
-
-The low-gain path is intended for large bunch signals and maximum headroom.
+The signal enters the board through **J2** and first passes through **U8 (RCAT-01+)**, a fixed attenuator used to improve the input match and provide isolation. It then passes through **U4 (XLF-172H+)**, which limits the RF bandwidth before the signal reaches **U7 (RPS-2-30+)**, a two-way power splitter.
 
 ```text
-RPS-2-30+ -> RFSoC ADC
+J2 RF input
+  -> U8 fixed attenuator
+  -> U4 input filter
+  -> U7 two-way splitter
+       |-> J5 low-gain output
+       |
+       `-> U2 digital step attenuator
+           -> U3 RF gain block
+           -> U5 output filter
+           -> J3 high-gain output
 ```
 
-An optional fixed attenuator footprint can be included in this path if additional ADC headroom or impedance isolation is required during testing.
+The RF input and both outputs are AC-coupled. Board-level RF interconnects are designed as 50-ohm transmission lines.
 
-## High-Gain Path
+### Low-gain output
 
-```text
-RPS-2-30+
-    |
-PE43713B-Z
-    |
-ADL5611
-    |
-XLF-172H+
-    |
-RFSoC ADC
-```
+One output of the splitter is AC-coupled directly to **J5**. This path contains no active gain stage and provides a conditioned copy of the input for larger signals and diagnostic measurements.
 
-The programmable attenuator is placed **before the ADL5611** so that large signals can be reduced before reaching the amplifier.
+### Programmable high-gain output
 
-This helps keep the amplifier out of compression while allowing the FPGA/processor to optimize the high-gain ADC level.
+The second splitter output is AC-coupled to **U2 (PE43713B-Z)**, a digitally controlled RF step attenuator. U2 sets the signal level applied to **U3 (ADL5613)**, a broadband RF gain block. The amplifier supply is delivered through bias inductor **L2** and is locally bypassed by the surrounding capacitors.
 
-## ADL5611 Bias Network
+After amplification, the signal passes through **U5 (XLF-172H+)** and is AC-coupled to **J3**, the high-gain output. The resulting gain depends on the fixed losses of the input network and splitter, the programmed attenuation of U2, the gain of U3, and the insertion loss of the output filter.
 
-The ADL5611 is operated from the +5 V rail.
+## Digital control
 
-Current schematic values:
+The PE43713 attenuator is controlled through **J4** using a three-wire serial interface:
 
-```text
-+5 V
- |
-43 nH
- |
-+---------------- RF OUT / bias
-|
-+-- 68 pF  -> GND
-+-- 1.2 nF -> GND
-+-- 1 uF   -> GND
-```
+- Serial data
+- Serial clock
+- Latch enable
 
-Input and output DC-blocking capacitors are retained around the amplifier.
+The three control lines pass through 22-ohm series resistors **R5-R7**. Resistors **R1** and **R2** establish the required logic state for the attenuator's power-up/select input.
 
-The bias components should be placed very close to the device and connected to a low-inductance ground structure.
+## Power supply
 
-## BPM Input
+External DC power enters through **J1**. **U1**, a low-noise linear regulator, generates the local **+5.0 V** supply used by the RF circuitry. Bulk and high-frequency bypass capacitors are placed around the regulator and RF devices to keep the supply impedance low across the operating bandwidth.
 
-The BPM button is a capacitive pickup and does not provide a DC beam component. The passive front-end chain therefore does not require an additional AC-coupling capacitor solely for DC removal.
+## Connector summary
 
-Preferred input chain:
+| Reference | Function |
+|---|---|
+| J1 | DC power input |
+| J2 | RF input |
+| J3 | High-gain RF output |
+| J4 | Digital attenuator control |
+| J5 | Low-gain RF output |
 
-```text
-SMA -> RCAT-01+ -> XLF-172H+ -> RPS-2-30+
-```
+## PCB construction
 
-Avoid unnecessary series components in this section because their parasitics can affect the multi-GHz pulse response.
+The board uses the PCBWay standard six-layer stackup with solid ground reference planes on **L2** and **L5**. Top-layer RF traces are routed as 50-ohm grounded coplanar waveguide referenced to L2. Ground-stitching vias along the RF paths and around the connector transitions maintain a short return path and reduce unwanted coupling.
 
-## PCB Layout Guidelines
+The RF components are placed in signal-flow order to minimize interconnect length. The four plated mounting holes are connected to ground and can bond the PCB ground to the enclosure.
 
-The RF layout is as important as the schematic.
+Via-in-pad vias are specified to be filled with nonconductive epoxy, planarized, copper capped, and plated over in accordance with **IPC-4761 Type VII**.
 
-- Maintain **50 Ω controlled-impedance transmission lines** throughout the single-ended RF chain.
-- Keep RF traces short and direct.
-- Avoid stubs on RF nets.
-- Place the RCAT-01+ and input XLF-172H+ close to the input connector.
-- Place the RPS-2-30+ close to the point where the two signal paths diverge.
-- Place the PE43713B-Z close to the ADL5611.
-- Place the ADL5611 bias choke and bypass capacitors immediately adjacent to the amplifier.
-- Use a continuous ground plane underneath the RF section.
-- Use dense ground vias around filters, splitter, amplifier, connectors, and transmission-line transitions.
-- Follow the manufacturer's recommended land patterns for RF components.
-- Ground all pins that the XLF-172H+ datasheet specifies as externally grounded, including the exposed paddle.
-- Keep digital attenuator control traces away from sensitive RF traces where practical.
+## Design and fabrication notes
 
-## Dynamic Range Strategy
+- The low-gain and high-gain outputs operate simultaneously.
+- The high-gain output level depends on the programmed PE43713 attenuation.
+- Preserve the specified 50-ohm geometry through RF pads and connector launches.
+- Keep the L2 reference plane continuous beneath all top-layer RF traces.
+- Fabricator changes to the stackup, dielectric materials, trace width, or coplanar gap require engineering approval.
+- Review the schematic, PCB, bill of materials, and fabrication outputs together before ordering boards.
 
-Both ADCs can be captured simultaneously.
+## Repository contents
 
-Firmware can select which measurement to use based on signal level:
+The repository contains the KiCad schematic and PCB layout for the AFE. Depending on the release, it may also include project-specific symbols and footprints, the bill of materials, fabrication files, assembly information, and mechanical drawings.
 
-```text
-High-gain ADC not near clipping
-        |
-        +---- yes ---> use high-gain data
-        |
-        +---- no ----> use low-gain data
-```
+## Organization
 
-The overlap between the two ranges can also be used for calibration and consistency checks.
-
-## Calibration
-
-Each RF path should be characterized independently because the two paths have different gain and frequency response.
-
-Recommended calibration measurements include:
-
-- Gain versus frequency
-- Phase versus frequency
-- Channel-to-channel delay
-- Pulse response
-- ADC full-scale level
-- High-gain compression point
-- PE43713 attenuation accuracy
-- Low/high gain overlap
-- Noise floor
-- Return loss at the BPM input
-
-Frequency-dependent correction can be applied in FPGA or software if required.
-
-## Repository Notes
-
-This repository contains the KiCad hardware design for the Fill Pattern Monitor front end.
-
-KiCad-generated backup archives and other temporary files should not be committed to the repository. Keep source schematic, PCB, symbol, footprint, and project files under version control while excluding generated backup/temporary files through `.gitignore`.
-
-## Status
-
-**Design in progress.**
-
-Current work includes:
-
-- RF signal-chain optimization
-- Final filter bandwidth selection
-- RFSoC ADC interface design
-- PCB footprint verification
-- RF layout
-- Dynamic-range and gain budgeting
-- Bench validation of the low- and high-gain paths
-
-## Project
-
-**NSLS-II Bunch-by-Bunch Fill Pattern Monitor**  
-RFSoC-based BPM diagnostics front end
+Brookhaven National Laboratory  
+National Synchrotron Light Source II (NSLS-II)
