@@ -3306,7 +3306,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "My_Symbols:SMA-Straight-132134"
+		(symbol "My_Symbols:SMA-TMB-V5F2-3LC"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -3323,7 +3323,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "132134"
+			(property "Value" "TMB-V5F2-3LC"
 				(at 3.81 -1.5631 0)
 				(effects
 					(font
@@ -3332,7 +3332,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "My_Footprints:SMA_Amphenol_132134_Vertical"
+			(property "Footprint" "My_Footprints:TMB-V5F2-3LC_PCBWay1_GCPW"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3359,15 +3359,6 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA MCX MMCX U.FL UMRF"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
 			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*"
 				(at 0 0 0)
 				(effects
@@ -3377,7 +3368,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "SMA-Straight-132134_0_1"
+			(symbol "SMA-TMB-V5F2-3LC_0_1"
 				(polyline
 					(pts
 						(xy -2.54 0) (xy -0.508 0)
@@ -3438,7 +3429,7 @@
 					)
 				)
 			)
-			(symbol "SMA-Straight-132134_1_1"
+			(symbol "SMA-TMB-V5F2-3LC_1_1"
 				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -8719,6 +8710,76 @@
 		)
 	)
 	(symbol
+		(lib_id "My_Symbols:SMA-TMB-V5F2-3LC")
+		(at 21.59 77.47 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "13f2a7e6-a880-4f6a-8c19-95183bf21bad")
+		(property "Reference" "J2"
+			(at 19.05 76.4931 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TMB-V5F2-3LC"
+			(at 29.972 72.898 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "My_Footprints:TMB-V5F2-3LC_PCBWay1_GCPW"
+			(at 21.59 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 21.59 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 21.59 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "48039fa5-0d2c-40e3-804f-256c18bee490")
+		)
+		(pin "2"
+			(uuid "59ac8ba7-6526-41cc-8d92-79d37403e7cf")
+		)
+		(instances
+			(project "fpm_afe"
+				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "My_Symbols:+5.0V")
 		(at 232.41 93.98 0)
 		(unit 1)
@@ -9531,6 +9592,75 @@
 		)
 	)
 	(symbol
+		(lib_id "My_Symbols:SMA-TMB-V5F2-3LC")
+		(at 361.95 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3f53af46-4a8c-4c3c-a49b-8edebd872d42")
+		(property "Reference" "J5"
+			(at 364.49 42.2031 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TMB-V5F2-3LC"
+			(at 355.854 38.608 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "My_Footprints:TMB-V5F2-3LC_PCBWay1_GCPW"
+			(at 361.95 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 361.95 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 361.95 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c7aceb01-8542-4902-8c97-a205b013b1a1")
+		)
+		(pin "2"
+			(uuid "e0e13f27-639e-4b0b-b0d2-6c5dd0bd6c4f")
+		)
+		(instances
+			(project "fpm_afe"
+				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "My_Symbols:RCAT-01+")
 		(at 34.29 78.74 0)
 		(unit 1)
@@ -10012,76 +10142,6 @@
 		)
 	)
 	(symbol
-		(lib_id "My_Symbols:SMA-Straight-132134")
-		(at 21.59 77.47 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "56f2dfb1-2aea-406e-b86a-21ca0e50efff")
-		(property "Reference" "J2"
-			(at 24.892 80.518 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "132134"
-			(at 24.892 73.152 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "My_Footprints:SMA_Amphenol_132134_Vertical"
-			(at 21.59 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 21.59 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
-			(at 21.59 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cdc75b28-2af3-4f49-a6ce-cf4544aedd41")
-		)
-		(pin "2"
-			(uuid "2c7c3876-5671-4b52-a7c2-d3810133d5c8")
-		)
-		(instances
-			(project "fpm_afe"
-				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
-					(reference "J2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 134.62 228.6 0)
 		(unit 1)
@@ -10278,76 +10338,6 @@
 			(project "fpm_afe"
 				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
 					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "My_Symbols:SMA-Straight-132134")
-		(at 386.08 137.16 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6fe4fb27-1e77-4508-933d-d90d454d2ad4")
-		(property "Reference" "J3"
-			(at 388.62 136.1831 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "132134"
-			(at 388.62 138.7231 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "My_Footprints:SMA_Amphenol_132134_Vertical"
-			(at 386.08 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 386.08 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
-			(at 386.08 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "8d7e34de-f2ac-4764-828c-2605fbf09f23")
-		)
-		(pin "1"
-			(uuid "1b64d9b4-f384-4c78-a1bd-cd3a13b9e470")
-		)
-		(instances
-			(project "fpm_afe"
-				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
-					(reference "J3")
 					(unit 1)
 				)
 			)
@@ -12717,6 +12707,75 @@
 		)
 	)
 	(symbol
+		(lib_id "My_Symbols:SMA-TMB-V5F2-3LC")
+		(at 386.08 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ea592c59-39a7-455c-be3d-8d3b9085c00b")
+		(property "Reference" "J3"
+			(at 388.62 136.1831 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TMB-V5F2-3LC"
+			(at 379.984 132.842 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "My_Footprints:TMB-V5F2-3LC_PCBWay1_GCPW"
+			(at 386.08 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 386.08 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 386.08 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "23969440-0796-4162-a6ce-66977876e902")
+		)
+		(pin "2"
+			(uuid "41d1b2af-db51-445b-9c6c-7a7b550a5c33")
+		)
+		(instances
+			(project "fpm_afe"
+				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 297.18 80.01 90)
 		(unit 1)
@@ -13011,76 +13070,6 @@
 			(project "fpm_afe"
 				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
 					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "My_Symbols:SMA-Straight-132134")
-		(at 361.95 43.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f4dcceb7-81f6-40ea-98b6-9b1b2a5e815b")
-		(property "Reference" "J5"
-			(at 364.49 42.2031 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "132134"
-			(at 364.49 44.7431 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "My_Footprints:SMA_Amphenol_132134_Vertical"
-			(at 361.95 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 361.95 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
-			(at 361.95 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c47d5a71-c02d-4091-a9f9-775b762f4002")
-		)
-		(pin "1"
-			(uuid "631aa708-5291-4608-bee1-89911941b818")
-		)
-		(instances
-			(project "fpm_afe"
-				(path "/87d67133-f485-4ab6-855f-1bc7a1c63eff"
-					(reference "J5")
 					(unit 1)
 				)
 			)
