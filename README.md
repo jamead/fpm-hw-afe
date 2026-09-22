@@ -2,7 +2,7 @@
 
 Analog front-end (AFE) board for the NSLS-II Fill Pattern Monitor.
 
-![NSLS-II Fill Pattern Monitor analog front-end board](fpm-afe.png)
+![NSLS-II Fill Pattern Monitor analog front-end board](fpm_afe.png)
 
 | Item | Description |
 |---|---|
